@@ -4,14 +4,17 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build-styl": "stylus -w stylus -o css"
+    "compile-styl": "stylus -w stylus -o ./public/css",
+    "compile-hbs": "node ./script/execHbs"
   },
   "dependencies": {
+    "bootstrap": "^3.4.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
+    "jquery": "^3.6.2",
     "morgan": "~1.9.1"
   }
 }
