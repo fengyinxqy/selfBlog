@@ -1,0 +1,32 @@
+html {
+  font-family: Georgia, "Times New Roman", Times, serif, "Microsoft YaHei";
+  color: #222;
+}
+
+a {
+  color: gray;
+}
+
+a:hover {
+  color: #222;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+::placeholder {
+  color: #ccc;
+}
