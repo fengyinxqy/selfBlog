@@ -47,12 +47,23 @@ h1 {
 }
 .blog-head {
   display: grid;
-  grid-template-columns: 1fr minmax(360px, auto) 3fr 2fr;
+  grid-template-columns: 1fr minmax(500px, auto) 3fr 2fr;
   grid-template-rows: 60px;
   padding: 18px 20px;
   background-color: #f1f1f1;
   justify-content: space-between;
   align-content: center;
+}
+@media screen and (min-width: 500px) and (max-width: 768px) {
+  .blog-head {
+    display: grid;
+    grid-template-columns: 1fr minmax(359px, auto) 3fr 2fr;
+    grid-template-rows: 60px;
+    padding: 18px 20px;
+    background-color: #f1f1f1;
+    justify-content: space-between;
+    align-content: center;
+  }
 }
 .blog-head--logo {
   justify-self: center;
@@ -84,7 +95,7 @@ h1 {
 .blog-input--search {
   border: 0;
   outline: 0;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0,0,0,0);
   padding: 0 6px;
   font-size: 14px;
 }
