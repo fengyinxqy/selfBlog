@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-16 16:21:50
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-16 20:21:38
+ * @LastEditTime: 2022-12-17 17:37:12
  * @FilePath: \blog\myBlog\index.html
  * @Description: 
  * 
@@ -23,7 +23,6 @@
     />
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>Bootstrap 101 Template</title>
-
     <link
       rel="stylesheet"
       href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
@@ -33,9 +32,8 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./public/css/base.css" />
-    <link rel="stylesheet" href="./public/css/head.css" />
-
+    <link rel="stylesheet" href="./public/css/index.css" />
+    <link rel="stylesheet" href="./node_modules/colors/examples/" />
     <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
     <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
 
@@ -74,43 +72,70 @@
         class="blog-head-menu glyphicon glyphicon-list visible-sm visible-xs"
       ></i>
     </header>
-    <main>
-      <div class="blog-slide">
-        <div class="blog-avatar">
-          <img class="blog-avatar--pic" src="" alt="" />
-          <h2 class="blog-avatar--nickname">张三</h2>
+    <main class="container blog-main">
+      <div class="row">
+        <div class="blog-slide hidden-sm hidden-xs col-lg-3 col-md-3">
+          <section class="blog-slide-wrap">
+            <div class="blog-avatar">
+              <img
+                class="blog-avatar--pic"
+                src="./public/img/avator.jpg"
+                alt="avator"
+              />
+            </div>
+            <div class="blog-info">
+              <h3 class="blog-avatar--nickname">肖祺彦</h3>
+              <div class="blog-info--state">
+                <div class="blog-state--item blog-line--col">
+                  <a href="#">
+                    <span class="blog-state--count">20</span>
+                    <span class="blog-state--name">文章</span>
+                  </a>
+                </div>
+                <div class="blog-state--item">
+                  <a href="#">
+                    <span class="blog-state--count">3</span>
+                    <span class="blog-state--name">分类</span>
+                  </a>
+                </div>
+              </div>
+              <p class="blog-info--content">你好,欢迎来到我的秘密花园</p>
+            </div>
+          </section>
         </div>
-        <div class="blog-info">
-          <h3 class="blog-info--title">个人简介</h3>
-          <p class="blog-info--content">个人简介内容个人简介内容</p>
-        </div>
-      </div>
-      <div class="blog-container">
-        <section class="blog-content--item">
-          <a href="#">
-            <h3 class="blog-item--title">文章标题</h3>
-            <p class="blog-item--date">2020-11-25</p>
-            <img class="blog-item--illu" src="./public/img/logo.jpg" alt="" />
-            <p class="blog-item--desc">
-              文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要...
-            </p>
-            <p class="blog-item--tags">
-              <span>点赞 (0)</span> <span>评论 (0)</span>
-            </p>
-          </a>
-        </section>
-        <section class="blog-content--item">
-          <a href="#">
-            <h3 class="blog-item--title">文章标题</h3>
-            <p class="blog-item--date">2020-11-25</p>
-            <img class="blog-item--illu" src="./public/img/logo.jpg" alt="" />
-            <p class="blog-item--desc">
-              文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要...
-            </p>
-            <p class="blog-item--tags">
-              <span>点赞 (0)</span> <span>评论 (0)</span>
-            </p>
-          </a>
+        <section class="blog-container col-lg-9 col-md-9">
+          <article class="blog-content--item">
+            <a href="#">
+              <h3 class="blog-item--title">文章标题</h3>
+              <p class="blog-item--date">
+                <i class="glyphicon glyphicon-time"></i> 2020-11-25
+              </p>
+              <img class="blog-item--illu" src="./public/img/logo.jpg" alt="" />
+              <p class="blog-item--desc">
+                文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要...
+              </p>
+              <p class="blog-item--tags">
+                <span class="blog-tags--like">点赞 (0)</span>
+                <span class="blog-tags--comment">评论 (0)</span>
+              </p>
+            </a>
+          </article>
+          <article class="blog-content--item">
+            <a href="#">
+              <h3 class="blog-item--title">文章标题</h3>
+              <p class="blog-item--date">
+                <i class="glyphicon glyphicon-time"></i> 2020-11-25
+              </p>
+              <img class="blog-item--illu" src="./public/img/logo.jpg" alt="" />
+              <p class="blog-item--desc">
+                文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要文章内容文章内容文章简介文章摘要...
+              </p>
+              <p class="blog-item--tags">
+                <span class="blog-tags--like">点赞 (0)</span>
+                <span class="blog-tags--comment">评论 (0)</span>
+              </p>
+            </a>
+          </article>
         </section>
       </div>
     </main>
@@ -121,11 +146,5 @@
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
-    <script src="./views/head.js"></script>
-    <script type="module" src="./modules/main.js"></script>
-    <script>
-      var template = Handlebars.templates["head.hbs"];
-      console.log(template());
-    </script>
   </body>
 </html>
