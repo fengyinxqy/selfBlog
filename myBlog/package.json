@@ -11,6 +11,7 @@
     "colors": "^1.4.0",
     "handlebars": "^4.7.7",
     "hbs": "~4.0.4",
-    "jquery": "^3.6.2"
+    "jquery": "^3.6.2",
+    "validator.tool": "^1.0.10"
   }
 }
