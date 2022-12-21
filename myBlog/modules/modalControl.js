@@ -2,16 +2,6 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-18 20:32:16
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 12:29:21
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\modalControl.js
- * @Description: 
- * 
- * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
- */
-/*
- * @Author: Petrichor 572752189@qq.com
- * @Date: 2022-12-18 20:32:16
- * @LastEditors: Petrichor 572752189@qq.com
  * @LastEditTime: 2022-12-20 14:49:36
  * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\modalControl.js
  * @Description: 

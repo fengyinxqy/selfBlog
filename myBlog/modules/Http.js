@@ -92,7 +92,6 @@ export default class Http {
     let rsaKey = this.rsaKey
     this.request.interceptors.request.use(async (config) => {
       let data = config.data
-      console.log(config)
       if (rsaKey in data) {
         data[rsaKey] = await this.encrty(data[rsaKey])
       }

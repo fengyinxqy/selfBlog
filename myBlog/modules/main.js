@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-16 20:09:01
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 12:56:55
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\main.js
+ * @LastEditTime: 2022-12-21 13:47:40
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog\modules\main.js
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -28,7 +28,6 @@ let modal = new Modal({
     modal.validator = new RegExpVerify(formType, (formData) => {
       //TODO validate Success
       console.log('提交 TODO http')
-      console.log(formData)
       new Http({
         type: formType,
         data: formData,
@@ -43,7 +42,7 @@ let modal = new Modal({
           }
         }
       })
-      // modal.reset()
+      modal.reset()
     }, (errors) => {
       //TODO validate error
       //聚焦到错误的input
