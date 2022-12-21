@@ -1,16 +1,7 @@
-/*
- * @Author: Petrichor 572752189@qq.com
- * @Date: 2022-12-18 20:32:04
- * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-20 14:25:23
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\modal.config.js
- * @Description: 
- * 
- * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
- */
 export default {
   "login": {
     title: '登录',
+    formType: 'login',
     formData: [
       {
         label: "用户名",
@@ -26,10 +17,6 @@ export default {
       }
     ],
     btns: [
-      {
-        targetName: 'resetContent',
-        name: '重置'
-      },
       {
         targetName: 'close',
         name: '取消'
@@ -43,6 +30,7 @@ export default {
   },
   "register": {
     title: '注册',
+    formType: 'register',
     formData: [
       {
         label: "用户名",
@@ -58,10 +46,6 @@ export default {
       }
     ],
     btns: [
-      {
-        targetName: 'resetContent',
-        name: '重置'
-      },
       {
         targetName: 'close',
         name: '取消'

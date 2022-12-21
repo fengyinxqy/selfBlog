@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-19 21:19:49
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-20 14:22:01
+ * @LastEditTime: 2022-12-21 13:01:01
  * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\validate.js
  * @Description: 
  * 
@@ -62,12 +62,14 @@
    2.  coll.isRequired().minLength(6).maxLength(12).isUser()
   2 动态校验
 */
+import util from './util.js'
 export default class RegExpVerify {
   constructor(type, successCallback, errorCallback) {
     //type 表单名称
     this.type = type
     this.successCallback = successCallback
     this.errorCallback = errorCallback
+    this.form = $(`#${this.type}`)
 
     return this.submitIntercept()
   }
@@ -111,7 +113,9 @@ export default class RegExpVerify {
     return new Validator(type, validateArr, (obj, evt) => {
       console.log(obj.errors, 'errors')
       if (obj.errors.length === 0) {
-        this.successCallback && this.successCallback()
+        console.log(this.form)
+        let formData = util.getFormJson(this.form)
+        this.successCallback && this.successCallback(formData)
         return false
       }
       //回调处理 errors信息 element message
