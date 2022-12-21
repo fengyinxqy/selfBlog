@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-16 16:21:50
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 12:32:57
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\index.html
+ * @LastEditTime: 2022-12-21 21:00:34
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog\index.html
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -40,40 +40,6 @@
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
-    <style>
-      .tip:hover::after {
-        z-index: 999;
-        content: " ";
-        width: 10px;
-        height: 10px;
-        transform: rotate(45deg);
-        position: absolute;
-        border: 1px solid;
-        top: 30px;
-        border-bottom: none;
-        border-right: none;
-        background-color: white;
-      }
-
-      .tip:hover::before {
-        z-index: 998;
-        content: attr(data-target);
-        position: absolute;
-        display: grid;
-        border: 1px solid;
-        border-radius: 5px;
-        top: 35px;
-        width: 400px;
-        overflow: hidden;
-        background-color: white;
-        box-sizing: border-box;
-        padding: 10px;
-      }
-
-      .tip:hover {
-        position: relative;
-      }
-    </style>
   </head>
   <body>
     <div hidden class="blog-modal"></div>
@@ -97,15 +63,7 @@
         <input class="blog-input--search" placeholder="文章检索" type="text" />
         <i class="glyphicon glyphicon-search"></i>
       </div>
-      <div class="blog-head--login hidden-sm hidden-xs">
-        <a href="javascript:;" class="blog-btn--login" data-modal="login"
-          >登录</a
-        >
-        /
-        <a href="javascript:;" class="blog-btn--register" data-modal="register"
-          >注册</a
-        >
-      </div>
+      <div class="blog-head--login hidden-sm hidden-xs"></div>
       <i
         class="blog-head-menu glyphicon glyphicon-list visible-sm visible-xs"
       ></i>
@@ -183,13 +141,22 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <!-- hbs -->
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.runtime.js"></script>
-    <script src="./views/modal_template.js"></script>
+    <!-- validator校验库 -->
     <script src="./node_modules/validator.tool/dist/validator.js"></script>
+    <!-- axios -->
     <script src="./node_modules/axios/dist/axios.min.js"></script>
+    <!-- rsa -->
     <script src="./node_modules/jsencrypt/bin/jsencrypt.min.js"></script>
+    <!-- store -->
     <script src="./node_modules/store/dist/store.legacy.min.js"></script>
+    <!-- editor -->
+    <script src="./node_modules/wangeditor/dist/wangEditor.min.js"></script>
+    <!-- template -->
+    <script src="./views/modal_template.js"></script>
+    <script src="./views/user_template.js"></script>
+    <script src="./views/write_template.js"></script>
     <script type="module" src="./modules/main.js"></script>
-    <script type="module"></script>
   </body>
 </html>

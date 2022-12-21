@@ -103,6 +103,25 @@ h1 {
   font-size: 40px;
   grid-column-start: 4;
 }
+.blog-head--avatar {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.blog-head--avatar:hover .blog-head--write {
+  transform: translateX(0) translateY(10px);
+}
+.blog-head--write {
+  position: absolute;
+  transform: translateX(-20px);
+  transition: 0.5s;
+  color: #070707;
+}
 .blog-main {
   padding-top: 40px;
 }

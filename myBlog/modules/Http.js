@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-20 14:44:56
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 12:44:48
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\Http.js
+ * @LastEditTime: 2022-12-21 16:29:26
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog\modules\Http.js
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -53,10 +53,9 @@ function encrypt(publicKey, value) {
 }
 
 export default class Http {
-  constructor({ type = 'user', data = {}, callback } = {}) {
+  constructor({ type = 'user', data = {} } = {}) {
     this.type = type
     this.data = data
-    this.callback = callback
     this.request = axios.create({ timeout: TIMEOUT })
     this.init()
   }
@@ -74,17 +73,15 @@ export default class Http {
     }
     // 添加拦截器
     this.interceptors()
-    // 发送请求
-    this.send()
   }
 
   async send() {
     let { url, method, data } = this
     try {
       let result = await this.request[method?.toLowerCase()](url, data)
-      result && this.callback(result)
+      return result
     } catch (error) {
-      console.log(error)
+      return error
     }
   }
 

@@ -15,6 +15,7 @@
     "jquery": "^3.6.2",
     "jsencrypt": "^3.3.1",
     "store": "^2.0.12",
-    "validator.tool": "^1.0.10"
+    "validator.tool": "^1.0.10",
+    "wangeditor": "^4.7.15"
   }
 }

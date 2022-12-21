@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-19 21:19:49
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 13:01:01
- * @FilePath: \项目_肖祺彦_2022.12.18.33\myBlog\modules\validate.js
+ * @LastEditTime: 2022-12-21 16:24:59
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog\modules\validate.js
  * @Description: 
  * 
  * 
@@ -64,11 +64,9 @@
 */
 import util from './util.js'
 export default class RegExpVerify {
-  constructor(type, successCallback, errorCallback) {
+  constructor(type) {
     //type 表单名称
     this.type = type
-    this.successCallback = successCallback
-    this.errorCallback = errorCallback
     this.form = $(`#${this.type}`)
 
     return this.submitIntercept()
@@ -109,18 +107,17 @@ export default class RegExpVerify {
   //创建校验对象
   creawteRev(validateArr) {
     let type = this.type
-    console.log(type, 'validate')
-    return new Validator(type, validateArr, (obj, evt) => {
-      console.log(obj.errors, 'errors')
-      if (obj.errors.length === 0) {
-        console.log(this.form)
-        let formData = util.getFormJson(this.form)
-        this.successCallback && this.successCallback(formData)
-        return false
-      }
-      //回调处理 errors信息 element message
-
-      this.errorCallback && this.errorCallback(obj.errors)
+    return new Promise((resolve, reject) => {
+      new Validator(type, validateArr, (obj, evt) => {
+        if (obj.errors.length === 0) {
+          let formData = util.getFormJson(this.form)
+          resolve(formData)
+          return false
+        }
+        //回调处理 errors信息 element message
+        this.errorControl(obj)
+        reject(obj.errors)
+      }).validate()
     })
   }
 
@@ -132,6 +129,14 @@ export default class RegExpVerify {
         'display': msg[key],
         'rules': value
       }
+    })
+  }
+
+  errorControl(obj) {
+    obj.errors[0]['element'].focus()
+    //循环所有错误 反馈信息
+    obj.errors.map(({ message, element }) => {
+      $(element).parent().addClass('blog-error--input')[0].dataset['msg'] = message
     })
   }
 }

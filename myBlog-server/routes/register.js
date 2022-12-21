@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 13:06:21
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 13:09:00
- * @FilePath: \express-sign\routes\register.js
+ * @LastEditTime: 2022-12-21 17:41:39
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog-server\routes\register.js
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -13,6 +13,7 @@ const router = express.Router();
 const userControl = require('../core/userControl')
 const { getUserStatusMsg } = require('../core/statusControl')
 const { getPrivateKey } = require('../core/rsaControl')
+const { sendToken } = require('../core/sendToken')
 
 /* POST register listing. */
 router.post('/', async function (req, res, next) {
@@ -25,7 +26,16 @@ router.post('/', async function (req, res, next) {
     })
   }
   let result = await userControl.addUser(username, pwd)
-  result.statusCode = 200
+  if (result.statusCode === 200) {
+    let token = await sendToken(result)
+    res.send(200, {
+      ...result,
+      data: {
+        token
+      }
+    })
+    return
+  }
   res.send(200, {
     ...result
   })

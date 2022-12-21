@@ -31,10 +31,10 @@ templates['modal.hbs'] = template({"1":function(container,depth0,helpers,partial
 
   return "      <button type=\""
     + ((stack1 = lookupProperty(helpers,"if").call(alias1,(depth0 != null ? lookupProperty(depth0,"isSubmit") : depth0),{"name":"if","hash":{},"fn":container.program(4, data, 0),"inverse":container.program(6, data, 0),"data":data,"loc":{"start":{"line":22,"column":20},"end":{"line":22,"column":63}}})) != null ? stack1 : "")
-    + "\" class=\"btn btn-default\"\r\n        data-btn-target=\""
-    + alias4(((helper = (helper = lookupProperty(helpers,"targetName") || (depth0 != null ? lookupProperty(depth0,"targetName") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"targetName","hash":{},"data":data,"loc":{"start":{"line":23,"column":25},"end":{"line":23,"column":39}}}) : helper)))
+    + "\" class=\"btn btn-default\"\r\n        data-modal-btn=\""
+    + alias4(((helper = (helper = lookupProperty(helpers,"targetName") || (depth0 != null ? lookupProperty(depth0,"targetName") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"targetName","hash":{},"data":data,"loc":{"start":{"line":23,"column":24},"end":{"line":23,"column":38}}}) : helper)))
     + "\">"
-    + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":23,"column":41},"end":{"line":23,"column":49}}}) : helper)))
+    + alias4(((helper = (helper = lookupProperty(helpers,"name") || (depth0 != null ? lookupProperty(depth0,"name") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data,"loc":{"start":{"line":23,"column":40},"end":{"line":23,"column":48}}}) : helper)))
     + "</button>\r\n";
 },"4":function(container,depth0,helpers,partials,data) {
     return "submit";
@@ -50,7 +50,7 @@ templates['modal.hbs'] = template({"1":function(container,depth0,helpers,partial
 
   return "<div class=\"blog-modal--wrap\">\r\n  <div class=\"blog-modal--head\">\r\n    <h4 class=\"blog-modal--title\">"
     + alias4(((helper = (helper = lookupProperty(helpers,"title") || (depth0 != null ? lookupProperty(depth0,"title") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data,"loc":{"start":{"line":3,"column":34},"end":{"line":3,"column":43}}}) : helper)))
-    + "</h4>\r\n    <button type=\"button\" class=\"close blog-modal--close\" data-btn-target=\"close\"><span aria-hidden=\"true\"\r\n        data-btn-target=\"close\">&times;</span></button>\r\n  </div>\r\n  <form id=\""
+    + "</h4>\r\n    <button type=\"button\" class=\"close blog-modal--close\" data-btn-target=\"close\"><span aria-hidden=\"true\"\r\n        data-modal-btn=\"close\">&times;</span></button>\r\n  </div>\r\n  <form id=\""
     + alias4(((helper = (helper = lookupProperty(helpers,"formType") || (depth0 != null ? lookupProperty(depth0,"formType") : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"formType","hash":{},"data":data,"loc":{"start":{"line":7,"column":12},"end":{"line":7,"column":24}}}) : helper)))
     + "\" action=\"javascript:;\" class=\"form-horizontal\">\r\n    <div class=\"blog-modal--content\">\r\n\r\n"
     + ((stack1 = lookupProperty(helpers,"each").call(alias1,(depth0 != null ? lookupProperty(depth0,"formData") : depth0),{"name":"each","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data,"loc":{"start":{"line":10,"column":6},"end":{"line":18,"column":15}}})) != null ? stack1 : "")

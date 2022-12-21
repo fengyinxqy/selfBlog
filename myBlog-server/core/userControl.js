@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 14:32:23
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 12:43:20
- * @FilePath: \express-sign\core\userControl.js
+ * @LastEditTime: 2022-12-21 17:35:14
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog-server\core\userControl.js
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -26,10 +26,20 @@ module.exports = {
     if (user?.['tag'] === 'USER_NOF') {
       let userId = await getUsersNum()
       userId = ('000000' + userId).substr(-6)
-      await appendUser({ user_id: userId, user_name: username, password })
-      return {
-        ...getUserStatusMsg('USER_ADD')
+      try {
+        await appendUser({ user_id: userId, user_name: username, password })
+        let resData = getUserStatusMsg('USER_ADD')
+        resData.statusCode = 200
+        return {
+          ...resData,
+          data: {
+            user_id: userId, user_name: username
+          }
+        }
+      } catch (error) {
+        console.log(error)
       }
+
     }
     if (user?.['tag'] === 'USER_FOND') {
       return {
@@ -66,8 +76,6 @@ module.exports = {
   },
   //验证Token信息
   async verifyToken(username, userID) {
-    console.log('-------------------')
-    console.log(username, userID)
     try {
       let users = await getUsers();
       let userInfo = users.find(item => item['user_id'].trim() === userID.trim())
