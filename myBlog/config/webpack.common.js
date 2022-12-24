@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-24 11:47:42
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-24 13:49:08
+ * @LastEditTime: 2022-12-24 15:21:20
  * @FilePath: \myBlog\config\webpack.common.js
  * @Description: 
  * 
@@ -11,17 +11,23 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+// 依赖关系图
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
+const webpack = require("webpack")
 
 module.exports = {
   //指定入口
   entry: {
     main: './app/main.js',
+    http: './app/http.js'
   },
   plugins: [
+    new webpack.optimize.SplitChunksPlugin(),
     new HtmlWebpackPlugin({
       title: "html plugn page",
       template: './index.html'
     }),
+    new BundleAnalyzerPlugin()
     // new CleanWebpackPlugin()
   ],
   output: {

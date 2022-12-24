@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-23 19:21:25
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-24 14:42:38
+ * @LastEditTime: 2022-12-24 15:30:44
  * @FilePath: \myBlog\config\webpack.dev.js
  * @Description: 
  * 
@@ -23,5 +23,16 @@ module.exports = merge(common, {
     host: 'localhost',
     port: 8080,
     open: true,
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
 });
