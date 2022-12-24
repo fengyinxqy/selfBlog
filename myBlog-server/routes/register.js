@@ -1,8 +1,8 @@
 /*
  * @Author: Petrichor 572752189@qq.com
- * @Date: 2022-12-15 13:06:21
+ * @Date: 2022-12-20 19:10:59
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 17:41:39
+ * @LastEditTime: 2022-12-22 21:41:56
  * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog-server\routes\register.js
  * @Description: 
  * 
@@ -18,6 +18,7 @@ const { sendToken } = require('../core/sendToken')
 /* POST register listing. */
 router.post('/', async function (req, res, next) {
   let { username, pwd } = req.body
+  console.log(username, pwd, '============----')
   //TODO 验证username pwd 格式内容
 
   if (!username || !pwd || username?.length === 0 || pwd?.length === 0) {
@@ -37,8 +38,9 @@ router.post('/', async function (req, res, next) {
     return
   }
   res.send(200, {
-    ...result
+    ...result,
   })
+
 });
 
 module.exports = router;

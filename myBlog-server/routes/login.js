@@ -1,13 +1,3 @@
-/*
- * @Author: Petrichor 572752189@qq.com
- * @Date: 2022-12-20 19:10:59
- * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 17:37:20
- * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog-server\routes\login.js
- * @Description: 
- * 
- * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
- */
 const express = require('express');
 const router = express.Router();
 const userControl = require('../core/userControl')
@@ -27,6 +17,7 @@ router.post('/', async function (req, res, next) {
     res.send(200, { ...result })
     return
   }
+  console.log(result)
   //如果验证成功 签发Token
   if (result.statusCode === '4020' && result.data) {
     let token = await sendToken(result)
@@ -41,5 +32,7 @@ router.post('/', async function (req, res, next) {
     })
   }
 });
+
+
 
 module.exports = router;

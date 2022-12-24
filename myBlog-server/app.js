@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 13:06:21
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-21 13:14:24
- * @FilePath: \express-sign\app.js
+ * @LastEditTime: 2022-12-22 21:31:14
+ * @FilePath: \项目_肖祺彦_2022.12.21.36\myBlog-server\app.js
  * @Description: 
  * 
  * Copyright (c) 2022 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/register', registerRouter);
-app.use('/', indexRouter);
+app.use('/user', indexRouter);
 app.use('/login', loginRouter);
 app.use('/getPublicKey', getPublicKeyRouter);
 
