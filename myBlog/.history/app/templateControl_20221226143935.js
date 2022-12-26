@@ -16,7 +16,7 @@ import artical from '../src/views/artical.hbs'
 
 
 const TEMP_MAP = {
-  head, user, modal, write, artical
+  head, user, modal, write
 }
 
 

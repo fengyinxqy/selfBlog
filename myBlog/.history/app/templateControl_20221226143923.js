@@ -12,11 +12,10 @@ import head from '../src/views/head.hbs'
 import user from '../src/views/user.hbs'
 import modal from '../src/views/modal.hbs'
 import write from '../src/views/write.hbs'
-import artical from '../src/views/artical.hbs'
-
+import write from '../src/views/write.hbs'
 
 const TEMP_MAP = {
-  head, user, modal, write, artical
+  head, user, modal, write
 }
 
 

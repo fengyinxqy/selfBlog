@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-24 11:47:42
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-24 15:21:20
+ * @LastEditTime: 2022-12-26 13:47:02
  * @FilePath: \myBlog\config\webpack.common.js
  * @Description: 
  * 
@@ -24,7 +24,7 @@ module.exports = {
   plugins: [
     new webpack.optimize.SplitChunksPlugin(),
     new HtmlWebpackPlugin({
-      title: "html plugn page",
+      title: "html page",
       template: './index.html'
     }),
     new BundleAnalyzerPlugin()

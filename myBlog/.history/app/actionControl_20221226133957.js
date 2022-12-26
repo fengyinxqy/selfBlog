@@ -119,7 +119,7 @@ export default class Action {
     $(document).on('click', 'a[data-router]', function (e) {
       let $target = $(this)
       let routeName = $target.data('router')
-      Router.go(`/${routeName}`, { routeName: routeName })
+      Router.go('/write', { routeName: routeName })
     })
   }
 }

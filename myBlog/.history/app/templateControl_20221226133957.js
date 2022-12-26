@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-21 20:00:52
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-26 14:39:23
+ * @LastEditTime: 2022-12-24 11:59:16
  * @FilePath: \myBlog\app\templateControl.js
  * @Description: 
  * 
@@ -12,11 +12,9 @@ import head from '../src/views/head.hbs'
 import user from '../src/views/user.hbs'
 import modal from '../src/views/modal.hbs'
 import write from '../src/views/write.hbs'
-import artical from '../src/views/artical.hbs'
-
 
 const TEMP_MAP = {
-  head, user, modal, write, artical
+  head, user, modal, write
 }
 
 

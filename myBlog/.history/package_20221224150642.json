@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "compile-styl": "stylus -w ./src/stylus -o ./assets/css",
     "build": "npx webpack --config ./config/webpack.prod.js",
     "dev": "npx webpack --config ./config/webpack.dev.js",
     "start": "webpack serve --mode development --config ./config/webpack.dev.js"
@@ -18,7 +17,6 @@
     "jsencrypt": "^3.2.1",
     "sme-router": "^0.12.8",
     "store": "^2.0.12",
-    "typo.css": "^2.1.2",
     "validator.tool": "^1.0.10",
     "wangeditor": "^4.7.15"
   },

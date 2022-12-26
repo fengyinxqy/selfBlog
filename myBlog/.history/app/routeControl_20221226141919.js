@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-11-14 18:25:32
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-26 14:58:25
+ * @LastEditTime: 2022-12-26 14:19:18
  * @FilePath: \myBlog\app\routeControl.js
  * @Description: 
  * 
@@ -26,9 +26,6 @@ const ROUTE_MAP = {
   'editor/submit': {
     wrap: ".blog-container",
     tempName: 'artical'
-  },
-  'editor/clean': {
-    wrap: ".blog-container",
   }
 }
 let editor
@@ -42,7 +39,6 @@ function routeHandle(req) {
 }
 
 function renderHandle(routeName, data) {
-  console.log(routeName, data)
   let { tempName } = ROUTE_MAP[routeName];
 
   if (!tempName) {
@@ -71,11 +67,7 @@ pageRouter.route('/write', (req, res, next) => {
 // 提交 富文本编辑器内容
 pageRouter.route('/editor/:active', (req, res, next) => {
   let routeName = req.routeName
-  if (editor && routeName === 'editor/clean') {
-    // 内容清空
-    editor.txt.clear()
-    return
-  }
+  console.log('/editor:active router')
   if (editor) {
     let body = editor.txt.html()
     res.render(renderHandle(routeName, { body }))
@@ -88,14 +80,14 @@ pageRouter.route('/index', (req, res, next) => {
   new Http({ type: routeName }).send().then(res => {
     pageRouter.go('/user', { routeName: 'user' })
   }).catch(err => {
-    res.render(renderHandle(routeName, { isLogin: false }))
+    res.render(Template.render(routeName, { isLogin: false }))
   })
 
 })
 
 pageRouter.route('/user', (req, res, next) => {
   let routeName = req.routeName
-  res.render(renderHandle(routeName, { isLogin: true }))
+  res.render(Template.render(routeName, { isLogin: true }))
 })
 
 //如果没有routeName 重定向到 初始目录 /
