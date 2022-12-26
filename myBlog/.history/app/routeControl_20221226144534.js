@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-11-14 18:25:32
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-26 14:58:25
+ * @LastEditTime: 2022-12-26 14:45:34
  * @FilePath: \myBlog\app\routeControl.js
  * @Description: 
  * 
@@ -71,14 +71,13 @@ pageRouter.route('/write', (req, res, next) => {
 // 提交 富文本编辑器内容
 pageRouter.route('/editor/:active', (req, res, next) => {
   let routeName = req.routeName
-  if (editor && routeName === 'editor/clean') {
-    // 内容清空
-    editor.txt.clear()
-    return
-  }
   if (editor) {
     let body = editor.txt.html()
     res.render(renderHandle(routeName, { body }))
+  }
+  console.log(editor)
+  if (editor && routeName === 'editor/clean') {
+    editor.setHtml('')
   }
 })
 
