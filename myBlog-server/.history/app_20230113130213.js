@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 13:06:21
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 13:21:23
+ * @LastEditTime: 2023-01-13 13:02:12
  * @FilePath: \myBlog-server\app.js
  * @Description: 
  * 
@@ -17,9 +17,7 @@ const cors = require('cors');
 const mongoose = require('./plugins/db');
 const assert = require('http-assert')
 const User = require('./models/User')
-const expressJwt = require('express-jwt')
 const { maxFileSize } = require('./config')
-const { getPublicKeySync } = require('./core/rsaControl')
 
 const app = express();
 
@@ -59,37 +57,6 @@ const searchRoute = require('./routes/search')
 const artLikesRoute = require('./routes/artLikes')
 
 
-app.use(expressJwt({
-  secret: getPublicKeySync(), //解密秘钥 
-  algorithms: ["RS256"], //6.0.0以上版本必须设置解密算法 
-  isRevoked: async (req, payload, next) => {
-    let { _id } = payload
-    req._id = _id
-    req.isPass = true
-    try {
-      let result = await User.findById(_id)
-      if (!result) {
-        req.isPass = false
-      }
-      next()
-    } catch (err) {
-      next(err)
-    }
-  }
-}).unless({
-  path: [
-    { url: '/api/rest/comments', methods: ['GET', 'POST'] },
-    { url: '/api/rest/columns', methods: ['GET'] },
-    { url: '/api/rest/articles', methods: ['GET'] },
-    { url: '/api/rest/keys', methods: ['GET'] },
-    { url: '/admin/login' },
-    { url: '/admin/register' },
-    { url: '/keys' },
-    { url: '/search' },
-    { url: '/likes' },
-  ]
-}))
-
 //资源路由
 app.use('/api/rest/:resource', resourceMiddleware(), busRoute)
 
@@ -99,44 +66,33 @@ app.use('/admin/register', registerRoute)
 
 //获取公钥
 app.use('/keys', pubKeyRoute)
-
 //文件上传
 app.use('/upload', uploadRoute)
 
 // 文章搜索
 app.use('/search', searchRoute)
 
-//文章点赞
-app.use('/likes', artLikesRoute)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-const ERROR_CODE_MAP = {
-  'LIMIT_FILE_SIZE': `文件大小不得超过 ${maxFileSize} bytes`,
-
-}
-const ERROR_STATUS_MAP = {
-  '401': "无权限操作,请先登录"
+const ERROR_MAP = {
+  'LIMIT_FILE_SIZE': `文件大小不得超过 ${maxFileSize} bytes`
 }
 
 // error handler
 app.use(function (err, req, res, next) {
-  console.log(err)
-  if (err.code in ERROR_CODE_MAP) {
+  // set locals, only providing error in development
+  if (err.code in ERROR_MAP) {
     err.status = 422
-    err.message = ERROR_CODE_MAP[err.code]
-  }
-  if (err.status in ERROR_STATUS_MAP) {
-    err.message = ERROR_STATUS_MAP[err.status]
+    err.message = ERROR_MAP[err.code]
   }
   res.status(err.status || 500).send({
     code: err.status,
     message: err.message
   });
-  // res.render('error');
 });
 
 module.exports = app;

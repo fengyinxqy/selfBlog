@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 13:06:21
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 13:21:23
+ * @LastEditTime: 2023-01-13 13:02:12
  * @FilePath: \myBlog-server\app.js
  * @Description: 
  * 
@@ -17,9 +17,7 @@ const cors = require('cors');
 const mongoose = require('./plugins/db');
 const assert = require('http-assert')
 const User = require('./models/User')
-const expressJwt = require('express-jwt')
 const { maxFileSize } = require('./config')
-const { getPublicKeySync } = require('./core/rsaControl')
 
 const app = express();
 
@@ -58,37 +56,6 @@ const uploadRoute = require('./routes/upload')
 const searchRoute = require('./routes/search')
 const artLikesRoute = require('./routes/artLikes')
 
-
-app.use(expressJwt({
-  secret: getPublicKeySync(), //解密秘钥 
-  algorithms: ["RS256"], //6.0.0以上版本必须设置解密算法 
-  isRevoked: async (req, payload, next) => {
-    let { _id } = payload
-    req._id = _id
-    req.isPass = true
-    try {
-      let result = await User.findById(_id)
-      if (!result) {
-        req.isPass = false
-      }
-      next()
-    } catch (err) {
-      next(err)
-    }
-  }
-}).unless({
-  path: [
-    { url: '/api/rest/comments', methods: ['GET', 'POST'] },
-    { url: '/api/rest/columns', methods: ['GET'] },
-    { url: '/api/rest/articles', methods: ['GET'] },
-    { url: '/api/rest/keys', methods: ['GET'] },
-    { url: '/admin/login' },
-    { url: '/admin/register' },
-    { url: '/keys' },
-    { url: '/search' },
-    { url: '/likes' },
-  ]
-}))
 
 //资源路由
 app.use('/api/rest/:resource', resourceMiddleware(), busRoute)

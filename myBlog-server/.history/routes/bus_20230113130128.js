@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2023-01-01 20:49:52
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 13:04:10
+ * @LastEditTime: 2023-01-13 13:00:43
  * @FilePath: \myBlog-server\routes\bus.js
  * @Description: 
  * 
@@ -78,6 +78,7 @@ router.put('/:id', async (req, res, next) => {
     })
   } catch (err) {
     console.log(err.message, '123')
+
     next(err)
   }
 })

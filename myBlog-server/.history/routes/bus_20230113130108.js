@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2023-01-01 20:49:52
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 13:04:10
+ * @LastEditTime: 2023-01-13 13:00:43
  * @FilePath: \myBlog-server\routes\bus.js
  * @Description: 
  * 
@@ -78,6 +78,7 @@ router.put('/:id', async (req, res, next) => {
     })
   } catch (err) {
     console.log(err.message, '123')
+
     next(err)
   }
 })
@@ -104,28 +105,17 @@ router.get('/', async (req, res) => {
 //查询资源详情
 router.get('/:id', async (req, res) => {
   let modelName = req.Model.modelName
-  let _id = req.params.id
   try {
-    let result = req.Model.findById(_id)
+    let querys = req.Model.findById(req.params.id)
     if (modelName in POPULATE_MAP) {
       let populates = POPULATE_MAP[modelName]
-      if (populates['path']) {
-        result = result.populate(populates)
-      }
-      result = await result.exec()
-      res.send(200, {
-        message: '查询成功',
-        data: result
-      })
-    }
-    //通过ID查看资源的联动操作
-    if (modelName in POP_GET_MAP) {
-      let { queryAct, options } = POP_GET_MAP[modelName]
-      await req.Model[queryAct](_id, options())
+      const result = await querys.populate(populates).exec()
+      res.send(result)
     }
   } catch (err) {
     console.log(err)
   }
+
 })
 
 

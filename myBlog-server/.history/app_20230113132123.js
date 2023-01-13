@@ -17,9 +17,7 @@ const cors = require('cors');
 const mongoose = require('./plugins/db');
 const assert = require('http-assert')
 const User = require('./models/User')
-const expressJwt = require('express-jwt')
 const { maxFileSize } = require('./config')
-const { getPublicKeySync } = require('./core/rsaControl')
 
 const app = express();
 

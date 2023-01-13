@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-11-14 18:33:43
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 13:29:54
- * @FilePath: \myBlog-server\plugins\POPULATE_MAP.js
+ * @LastEditTime: 2023-01-12 16:15:02
+ * @FilePath: \blog-server\plugins\POPULATE_MAP.js
  * @Description: 
  * 
  * Copyright (c) 2023 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -28,10 +28,6 @@ module.exports = {
   "Comment": [{
     "path": "uid",
     "select": "nikname avatar"
-  }],
-  "User": [{
-    "path": "",
-    "select": "nikname avatar username email"
   }],
   "Column": [
     {

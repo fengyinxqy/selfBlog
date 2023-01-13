@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2023-01-01 14:28:25
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-13 12:48:25
+ * @LastEditTime: 2023-01-13 12:23:54
  * @FilePath: \myBlog-server\models\Article.js
  * @Description: 
  * 
@@ -24,14 +24,6 @@ const schema = new mongoose.Schema({
   //文章内容
   content: {
     type: String, // URIencode(HTMLCode)
-    set(val) {
-      try {
-        val = decodeURIComponent(`${val}`).replace(/\"/g, "\'")
-        return val
-      } catch (err) {
-        return val
-      }
-    },
     required: true,
   },
   //更新日期
