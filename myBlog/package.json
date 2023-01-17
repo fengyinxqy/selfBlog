@@ -29,6 +29,7 @@
     "handlebars": "^4.7.7",
     "handlebars-loader": "^1.7.3",
     "html-webpack-plugin": "^5.5.0",
+    "iscroll": "^5.2.0",
     "style-loader": "^3.3.1",
     "stylus-loader": "^7.1.0",
     "terser-webpack-plugin": "^5.3.6",

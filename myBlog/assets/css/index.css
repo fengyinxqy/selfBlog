@@ -55,7 +55,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 4fr 3fr 2fr;
   grid-template-rows: 60px;
-  padding: 8px calc(100% -90vw);
+  padding: 8px calc(100% -94vw);
   background-color: #f1f1f1;
   justify-content: space-between;
   align-content: center;
@@ -129,7 +129,6 @@ h1 {
   padding-top: 40px;
 }
 .blog-slide-wrap {
-  width: 240px;
   padding: 20px;
   background-color: #f1f1f1;
   display: flex;
@@ -185,12 +184,14 @@ h1 {
 .blog-container {
   padding: 8px;
   box-shadow: 0 0 3px #ccc;
+  height: 80vh;
+  overflow: hidden;
 }
 .blog-content--item {
   padding: 12px;
   background-color: #f1f1f1;
   text-align: center;
-  border-bottom: 2px solid #fff;
+  border-bottom: 8px solid #fff;
   border-radius: 8px;
 }
 .blog-item--title {
@@ -201,6 +202,9 @@ h1 {
   width: auto;
   height: 220px;
   padding: 8px;
+}
+.blog-item--date {
+  padding: 16px 0;
 }
 .blog-item--desc {
   padding: 24px;
@@ -216,11 +220,13 @@ h1 {
   padding: 0 16px;
 }
 .blog-tags--like,
+.blog-tags--hit,
 .blog-tags--comment {
   padding: 0 8px;
   color: #bbb;
 }
 .blog-tags--like:hover,
+.blog-tags--hit:hover,
 .blog-tags--comment:hover {
   color: #777;
 }
@@ -340,4 +346,77 @@ pre code {
 ul,
 ol {
   margin: 10px 0 10px 20px;
+}
+.blog-message {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  bottom: 0;
+}
+.blog-message .alert {
+  transform: translateY(52px);
+  opacity: 1;
+}
+.blog-message .alert.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.blog-message .alert.move {
+  animation: slideUp 3s 0.3s forwards;
+}
+@-moz-keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+@-webkit-keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+@-o-keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
 }
