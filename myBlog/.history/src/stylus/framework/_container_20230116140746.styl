@@ -1,0 +1,45 @@
+@import "./_variables.styl"
+/* container start */
+.blog-container 
+  padding padding-space
+  box-shadow 0 0 3px bg-modifier-color
+  height 80vh
+  overflow hidden
+
+.blog-content--item
+  padding padding-space * 1.5
+  background-color bg-theme-color
+  text-align center
+  border-bottom 2px solid line-modifier-color
+  border-radius radius-theme-size * 2
+
+
+.blog-item--title
+  color font-title-color 
+  font-size font-size-h * 2
+
+.blog-item--illu 
+  width auto
+  height 220px
+  padding padding-space
+
+.blog-item--desc 
+  padding padding-space*3
+  text-align left
+  text-indent 2em
+  &:hover
+    color font-theme-color 
+
+.blog-item--tags 
+  display flex
+  justify-content flex-end
+  padding 0 padding-space*2
+
+.blog-tags--like,
+.blog-tags--comment
+  padding 0 padding-space
+  color lighten(font-theme-color ,60%)
+  &:hover 
+     color lighten(font-theme-color ,20%)
+
+/* container end */
