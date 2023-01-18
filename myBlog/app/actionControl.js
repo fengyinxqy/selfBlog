@@ -3,7 +3,6 @@ import Validate from './validate'
 import Http from './http'
 import Router from './routeControl'
 import $ from 'jquery'
-import scroll from './scroll'
 /*
   actionControl
   管理页面所有发生的行为
@@ -20,13 +19,14 @@ import scroll from './scroll'
 */
 const RES_HANDLE = {
   register() {
-    this.user()
+    this.index()
   },
   login() {
-    this.user()
+    this.index()
   },
-  user() {
-    Router.go('/user', { routeName: 'user' })
+  index() {
+    // Router.go('/user', { routeName: 'user' })
+    Router.go('/index', { routeName: 'index', isLogin: true })
   }
 }
 
@@ -51,7 +51,9 @@ export default class Action {
 
   init() {
     //初始路由
-    Router.go('/index', { routeName: 'index' })
+    // Router.go('/index', { routeName: 'index' })
+
+
   }
 
   //modal
@@ -103,10 +105,6 @@ export default class Action {
         let result = await new Http({ type: formType, data: formData, }).send()
         //如果请求回调成功 执行handle句柄
         RES_HANDLE[formType](result)
-        /*
-          业务处理 登录 回调 处理登录后续细节 dom
-        
-        */
         //如果存在modal 关闭modal
         this.modal && this.modal.close()
       } catch (err) {
