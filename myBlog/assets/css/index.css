@@ -1,12 +1,12 @@
 html {
-  font-family: Georgia, "Times New Roman", Times, serif, "Microsoft yahei";
+  font-family: Georgia, 'Times New Roman', Times, serif, "Microsoft yahei";
   color: #222;
 }
 a {
   color: #808080;
 }
 a:hover {
-  color: #222;
+  color: #808080;
   cursor: pointer;
   text-decoration: none;
 }
@@ -31,15 +31,15 @@ h1 {
   position: relative;
 }
 .blog-line--col::after {
-  content: "";
   position: absolute;
   right: 0;
   top: 0;
   bottom: 0;
   margin: auto;
+  content: '';
   width: 1px;
   height: 80%;
-  background-color: lint-theme-color;
+  background-color: #555;
   transform: scaleX(0.5);
 }
 .glyphicon {
@@ -50,6 +50,21 @@ h1 {
 }
 .w-e-text-container {
   height: 500px !important;
+}
+.alert {
+  margin-bottom: 0;
+}
+.panel-body {
+  padding: 0;
+}
+.panel-info {
+  color: #999;
+  border: 0;
+}
+.panel-info>.panel-heading {
+  color: #555;
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
 }
 .blog-head {
   display: grid;
@@ -303,6 +318,13 @@ h1 {
 }
 .blog-write--control a:hover {
   background-color: #f1f1f1;
+}
+.blog-write--input {
+  border: 0;
+  outline: 0;
+  padding: 8px;
+  font-size: 24px;
+  color: #555;
 }
 .blog-artical {
   padding: 8px;

@@ -64,6 +64,7 @@
 */
 import util from './util/util'
 import Validator from 'validator.tool'
+import $ from 'jquery'
 export default class RegExpVerify {
   constructor(type) {
     //type 表单名称
