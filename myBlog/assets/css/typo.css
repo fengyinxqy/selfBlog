@@ -1,13 +1,7 @@
 @charset "utf-8";
 
 /* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
-html {
-  color: #333;
-  background: #fff;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  text-rendering: optimizelegibility;
-}
+
 
 /* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
 html.borderbox *, html.borderbox *:before, html.borderbox *:after {
@@ -246,7 +240,7 @@ strong, b {
   color: #000;
   line-height: 1.35;
   padding:.3em ;
-  background-color: #f5f5f5;
+  font-weight: 500;
 }
 
 /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */

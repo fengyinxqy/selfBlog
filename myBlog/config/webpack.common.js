@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-24 11:47:42
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2022-12-26 13:47:02
+ * @LastEditTime: 2023-01-19 19:49:32
  * @FilePath: \myBlog\config\webpack.common.js
  * @Description: 
  * 
@@ -19,7 +19,7 @@ module.exports = {
   //指定入口
   entry: {
     main: './app/main.js',
-    http: './app/http.js'
+    http: './app/module/http.js'
   },
   plugins: [
     new webpack.optimize.SplitChunksPlugin(),
