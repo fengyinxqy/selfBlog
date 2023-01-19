@@ -1,0 +1,55 @@
+
+/*container start*/
+
+
+.blog-content--item
+  padding padding-space * 1.5
+  background-color line-modifier-color
+  text-align center
+  margin-bottom 8px
+  border-radius radius-theme-size * 2
+
+.blog-item--head
+  display flex
+  align-items center
+  height 60px
+  font-size 16px
+.blog-item--author
+  padding-right 10px
+  
+
+
+.blog-item--title
+  color font-title-color 
+  font-size font-size-h * 2
+
+.blog-item--illu 
+  width auto
+  height 220px
+  padding padding-space 0
+  @media screen and (max-width: 600px)
+    height 180px
+
+
+.blog-item--date
+  padding padding-space*2 0
+.blog-item--desc 
+  padding padding-space*3
+  text-align left
+  text-indent 2em
+  &:hover
+    color font-theme-color 
+
+.blog-item--tags 
+  display flex
+  justify-content flex-end
+  padding 0 padding-space*2
+
+.blog-tags--like,
+.blog-tags--hit,
+.blog-tags--comment
+  padding 0 padding-space
+  color lighten(font-theme-color ,60%)
+  &:hover 
+     color lighten(font-theme-color ,20%)
+/*container end*/

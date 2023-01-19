@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2023-01-12 12:53:09
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-18 17:35:00
+ * @LastEditTime: 2023-01-19 13:35:38
  * @FilePath: \myBlog-server\routes\upload.js
  * @Description: 
  * 
@@ -44,9 +44,7 @@ const upload = multer({
 })
 
 
-router.post('/:classify', upload.single('file'), async (req, res, next) => {
-  console.log(req.params)
-  console.log(req.headers)
+router.post('/:classify', upload.any(), async (req, res, next) => {
   try {
     let fileType = FILE_TYPE[req.params['classify']] ?? ''
     assert(fileType, 400, '文件上传分类不正确')
@@ -54,17 +52,19 @@ router.post('/:classify', upload.single('file'), async (req, res, next) => {
     if (fileType === 'user') {
       assert(uid, 422, '用户头像必须指定UID')
     }
-    let { destination, filename } = req.file
-    let fileURL = path.join(uploadURL, path.parse(destination).name, filename).replace(/\\/g, '/').replace('http:/', 'http://')
+    let fileURLS = req.files.map(item => {
+      let { destination, filename } = item
+      return path.join(uploadURL, path.parse(destination).name, filename).replace(/\\/g, '/').replace('http:/', 'http://')
+    })
+
     let resultData = {
       message: "上传成功",
       data: {
-        filename,
-        fileURL
+        fileURL: fileURLS[0]
       }
     }
     if (fileType === 'article') {
-      let data = [fileURL]
+      let data = fileURLS
       resultData = {
         "errno": 0,
         data

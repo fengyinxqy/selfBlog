@@ -1,24 +1,30 @@
 @import "./_base.styl"
   /*header start */
 .blog-head 
+  position fixed
+  z-index 99999
+  width 100%
   display grid
-  grid-template-columns 1fr 4fr 3fr 2fr
+  grid-template-columns 1fr 4fr 2fr 1fr
   grid-template-rows 60px
-  padding padding-space calc(100%-94vw)
-  background-color #f1f1f1
+  padding padding-space/2 calc(100% - 94vw)
+  background-color bg-reverse-color
   justify-content space-between
   align-content center
+  & a
+    color #fff
 
 
 .blog-head--logo 
   justify-self center
   align-self center
   overflow hidden
-  width 60px
-  height 60px
   border-radius 50%
   text-align center
-
+  & img 
+    display block
+    width auto
+    height 40px
 
 .blog-head--nav 
   align-self center
@@ -29,7 +35,9 @@
 .blog-nav--list 
   display grid
   grid-template-columns repeat(6, 1fr)
-  font-size 20px
+  font-size 16px
+ 
+
 
 
 .blog-head--search 
@@ -37,16 +45,16 @@
   align-self center
   border-radius 6px
   padding 4px
-  box-shadow 0 0 2px #222
-  font-size 20px
+  box-shadow 0 0 2px bg-theme-color
 
 
 .blog-input--search 
   border 0
   outline 0
-  background-color rgba(0, 0, 0, 0)
   padding 0 6px
   font-size 14px
+  background-color transparent
+  color #fff
 
 
 .blog-head--login 
@@ -71,13 +79,16 @@
   width 40px
   height 40px
   border-radius 50%
+  box-shadow 0 0 4px font-theme-color
   &:hover 
     & .blog-head--write
       transform translateX(0) translateY(10px)
+      
+      
       
 .blog-head--write
   position absolute
   transform translateX(-20px)
   transition .5s
-  color rgb(7, 7, 7)
+  color #fff
 /*header end */
