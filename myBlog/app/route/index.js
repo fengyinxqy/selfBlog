@@ -86,6 +86,11 @@ export default class Router {
     })
   }
 
+  reload(url, body) {
+    this._history.go('/', {})
+    this._history.go(url, body)
+  }
+
   /**
    * go to a url
    * 

@@ -3,10 +3,13 @@ import JSEncrypt from 'jsencrypt'
 import store from 'store'
 import Message from './message'
 
+
+
 const BASEURL = 'http://127.0.0.1:3000'
 const TIMEOUT = 3000
 const pubKeyName = 'ua_publicKay'
 const tokenName = "ua_jot"
+
 
 const REQUEST_MAP = {
   'register': {
@@ -19,6 +22,14 @@ const REQUEST_MAP = {
     url: '/index',
     method: 'GET',
     noMessage: true
+  },
+  'getUserInfo': {
+    url: '/user',
+    method: 'GET',
+  },
+  'putUserInfo': {
+    url: '/user',
+    method: 'PUT',
   },
   'login': {
     url: 'admin/login',
@@ -38,6 +49,14 @@ const REQUEST_MAP = {
     url: '/api/rest/columns',
     method: 'GET'
   },
+  'postColumn': {
+    url: '/api/rest/columns',
+    method: 'POST'
+  },
+  'postComment': {
+    url: '/api/rest/comments',
+    method: 'POST'
+  },
   'postArticle': {
     url: '/api/rest/articles',
     method: 'POST'
@@ -54,7 +73,7 @@ const REQUEST_MAP = {
   'uploadArticle': {
     url: '/upload/article',
     method: 'POST'
-  }
+  },
 }
 
 async function encrypt(value) {
@@ -78,7 +97,6 @@ async function encrypt(value) {
 /*axios 默认值*/
 axios.defaults.baseURL = BASEURL
 let instance = axios.create()
-
 //request 拦截器
 instance.interceptors.request.use(async (config) => {
   let token = store.get(tokenName)
@@ -98,6 +116,7 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
   return Promise.reject(error);
 });
+
 
 export default async function Http({ type, data }) {
   if (!(type in REQUEST_MAP)) {

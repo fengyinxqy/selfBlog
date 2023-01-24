@@ -3,6 +3,7 @@ import Validate from '../module/validate'
 import Http from '../module/http'
 import Router from './routeControl'
 import $ from 'jquery'
+import Message from '../module/message'
 /*
   actionControl
   管理页面所有发生的行为
@@ -18,14 +19,20 @@ import $ from 'jquery'
 
 */
 const RES_HANDLE = {
+  putUserInfo() {
+    new Message('修改成功').success()
+    Router.go('/index', { routeName: 'index' })
+  },
   register() {
     this.index()
   },
   login() {
     this.index()
   },
+  postColumn() {
+    Router.reload('/columns', { routeName: 'columns' })
+  },
   index() {
-    // Router.go('/user', { routeName: 'user' })
     Router.go('/index', { routeName: 'index', isLogin: true })
   }
 }
@@ -47,12 +54,48 @@ export default class Action {
     this.modalAgency()
     this.formAgency()
     this.routeAgency()
+    this.columnsAgency()
+    this.searchAgency()
   }
 
   init() {
     //初始路由
     Router.go('/index', { routeName: 'index' })
   }
+
+  searchAgency() {
+    function routeSearch(target) {
+      let val = $(target).val()
+      if (val) {
+        let routeName = $(target).data('input')
+        Router.reload(`/${routeName}`, {
+          routeName, search: val
+        })
+      }
+      $(target).val('').trigger('blur')
+    }
+    function getSearchValue(e) {
+      if (e.keyCode === 13) {
+        routeSearch(e.target)
+      }
+    }
+    //搜索行为 点击 回车
+    $(document).on('focus', '[data-input]', (e) => {
+      let $inputTarget = $(e.target)
+      $inputTarget.on('keyup', getSearchValue)
+    })
+    $(document).on('blur', '[data-input]', (e) => {
+      let $inputTarget = $(e.target)
+      $inputTarget.off('keyup', getSearchValue)
+    })
+    $(document).on('click', '[data-submit]', (e) => {
+      let $target = $(e.target)
+      let submitType = $target.data('submit')
+      let $input = $(`[data-input=${submitType}]`)
+      routeSearch($input)
+    })
+  }
+
 
   //modal
   modalAgency() {
@@ -100,25 +143,32 @@ export default class Action {
       try {
         let formData = await new Validate(formType)
         //调用 Http发送请求 
-        let result = await Http({ type: formType, data: formData, })
+        let result = await Http({ type: formType, data: formData })
         //如果请求回调成功 执行handle句柄
-        RES_HANDLE[formType](result)
+        if (formType in RES_HANDLE) {
+          RES_HANDLE[formType](result)
+        }
         //如果存在modal 关闭modal
         this.modal && this.modal.close()
       } catch (err) {
         console.log(err)
       }
-
     })
   }
-
   //router
   routeAgency() {
     $(document).on('click', 'a[data-router]', function (e) {
       let $target = $(this)
       let routeName = $target.data('router')
-      let id = $target.data('id')
-      Router.go(`/${routeName}`, { routeName: routeName, id })
+      let articleID = $target.data('article-id')
+      let columnID = $target.data('column-id')
+      Router.go(`/${routeName}`, { routeName: routeName, articleID, columnID })
+    })
+  }
+
+  columnsAgency() {
+    $(document).on('click', 'li[data-column]', function (e) {
+      $(this).addClass('selected').siblings('li').removeClass('selected')
     })
   }
 }

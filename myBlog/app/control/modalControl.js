@@ -2,8 +2,8 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-26 13:39:58
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-16 22:03:00
- * @FilePath: \myBlog\app\modalControl.js
+ * @LastEditTime: 2023-01-20 16:22:28
+ * @FilePath: \myBlog\app\control\modalControl.js
  * @Description: 
  * 
  * Copyright (c) 2023 by Petrichor 572752189@qq.com, All Rights Reserved. 
@@ -55,7 +55,6 @@ export default class Modal {
   }
   //提交
   confirm() {
-    console.log('confirm')
   }
   //reset 重置blog-wrap
   reset() {

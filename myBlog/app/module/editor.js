@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2023-01-18 17:29:15
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-19 19:53:38
+ * @LastEditTime: 2023-01-21 15:42:53
  * @FilePath: \myBlog\app\module\editor.js
  * @Description: 
  * 
@@ -48,9 +48,9 @@ class Edite {
   }
   create() {
     this.editor.create()
-    this.linsten()
+    this.listen()
   }
-  linsten() {
+  listen() {
     $('.blog-write').on('click', '.blog-write--submit', (e) => {
       e.preventDefault()
       let data = {}
