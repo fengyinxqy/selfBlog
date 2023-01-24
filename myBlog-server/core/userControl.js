@@ -78,7 +78,6 @@ module.exports = {
   },
   //验证Token信息
   async verifyToken(username, userID) {
-    console.log(username, userID)
     try {
       let users = await getUsers();
       let userInfo = users.find(item => item['user_id'].trim() === userID.trim())

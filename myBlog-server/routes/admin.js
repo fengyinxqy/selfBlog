@@ -25,7 +25,6 @@ const CLASSIFY = {
 router.post('/:classify', async (req, res, next) => {
 
   let { username, password } = req.body
-  console.log(username, password)
   let { classify } = req.params
 
   let isClassPass = classify in CLASSIFY
@@ -43,7 +42,6 @@ router.post('/:classify', async (req, res, next) => {
       assert.equal(decrypt(password), decrypt(decrypt(user.password)), 422, '账号密码错误')
     }
     if (classify === 'register') {
-      console.log(123312)
       user = await User.create(req.body)
     }
     //生成token

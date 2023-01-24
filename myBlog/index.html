@@ -1,3 +1,13 @@
+<!--
+ * @Author: Petrichor 572752189@qq.com
+ * @Date: 2022-12-26 13:39:58
+ * @LastEditors: Petrichor 572752189@qq.com
+ * @LastEditTime: 2023-01-24 17:32:59
+ * @FilePath: \myBlog\index.html
+ * @Description: 
+ * 
+ * Copyright (c) 2023 by Petrichor 572752189@qq.com, All Rights Reserved. 
+-->
 <!DOCTYPE html>
 <html lang="zh-CN">
   <head>
@@ -46,16 +56,20 @@
       <nav class="blog-head--nav hidden-sm hidden-xs">
         <ul class="blog-nav--list">
           <li><a href="#">首页</a></li>
-          <li><a href="#">文章</a></li>
-          <li><a href="#">心得</a></li>
-          <li><a href="#">资源</a></li>
+          <li><a ="javascript:;" data-router="columns">分类</a></li>
+          <li><a href="#">留言</a></li>
           <li><a href="#">相册</a></li>
           <li><a href="#">案例</a></li>
         </ul>
       </nav>
       <div class="blog-head--search hidden-sm hidden-xs">
-        <input class="blog-input--search" placeholder="文章检索" type="text" />
-        <i class="glyphicon glyphicon-search"></i>
+        <input
+          class="blog-input--search"
+          data-input="articles"
+          placeholder="文章检索"
+          type="text"
+        />
+        <i class="glyphicon glyphicon-search" data-submit="articles"></i>
       </div>
       <div class="blog-head--login hidden-sm hidden-xs"></div>
       <i
@@ -65,37 +79,13 @@
     <main class="container blog-main">
       <div class="row">
         <div class="blog-slide hidden-sm hidden-xs col-lg-3 col-md-3">
-          <section class="blog-slide-wrap">
-            <div class="blog-avatar">
-              <img class="blog-avatar--pic" src="../img/avatar.jpg" alt="" />
-            </div>
-            <div class="blog-info">
-              <h3 class="blog-info--nicknam">赶驴的小毛孩</h3>
-
-              <div class="blog-info--state">
-                <div class="blog-state--item blog-line--col">
-                  <a href="#">
-                    <span class="blog-state--count">20</span>
-                    <span class="blog-state--name">文章</span>
-                  </a>
-                </div>
-                <div class="blog-state--item">
-                  <a href="#">
-                    <span class="blog-state--count">3</span>
-                    <span class="blog-state--name">分类</span>
-                  </a>
-                </div>
-              </div>
-              <p class="blog-info--content">
-                你好 欢迎来到我的博客 我是 小毛驴
-              </p>
-            </div>
-          </section>
+          <section class="blog-slide-wrap"></section>
         </div>
         <div class="blog-container col-lg-9 col-md-9">
           <div class="blog-container--wrap"></div>
         </div>
       </div>
+      <div class="blog-toolbar hidden-xs"></div>
     </main>
     <footer></footer>
   </body>

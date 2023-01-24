@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-26 13:39:58
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-19 19:31:34
+ * @LastEditTime: 2023-01-24 17:26:38
  * @FilePath: \myBlog\app\control\templateControl.js
  * @Description: 
  * 
@@ -15,10 +15,15 @@ import write from '../../src/views/write.hbs'
 import article from '../../src/views/article.hbs'
 import message from '../../src/views/message.hbs'
 import articles from '../../src/views/articles.hbs'
+import columns from '../../src/views/columns.hbs'
+import comment from '../../src/views/comment.hbs'
+import toolbar from '../../src/views/toolbar.hbs'
+import info from '../../src/views/info.hbs'
+import slide from '../../src/views/slide.hbs'
 import $ from 'jquery'
 
 const TEMP_MAP = {
-  head, user, modal, write, article, message, articles
+  head, user, modal, write, article, message, articles, columns, comment, toolbar, info, slide
 }
 
 export default class TemplateControl {
