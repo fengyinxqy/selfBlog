@@ -29,8 +29,8 @@
 
 ### PC 端
 
-![PC端](E:\Desktop\项目_肖祺彦_2022.12.21.36\PC端.jpg)
+<img src="./PC端.jpg" alt="">
 
 ### 移动 端
 
-![Mobile端](E:\Desktop\项目_肖祺彦_2022.12.21.36\Mobile端.jpg)
+<img src="./Mobile端.jpg" alt="">
