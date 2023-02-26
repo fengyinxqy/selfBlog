@@ -1,12 +1,12 @@
 /*
  * @Author: Petrichor 572752189@qq.com
- * @Date: 2023-01-12 12:53:09
+ * @Date: 2023-01-19 14:21:34
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-19 13:35:38
+ * @LastEditTime: 2023-02-26 15:42:54
  * @FilePath: \myBlog-server\routes\upload.js
  * @Description: 
  * 
- * Copyright (c) 2023 by Petrichor 572752189@qq.com, All Rights Reserved. 
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
  */
 const express = require('express');
 const router = express.Router();
@@ -48,7 +48,7 @@ router.post('/:classify', upload.any(), async (req, res, next) => {
   try {
     let fileType = FILE_TYPE[req.params['classify']] ?? ''
     assert(fileType, 400, '文件上传分类不正确')
-    let { uid } = req.body
+    let uid = req._id
     if (fileType === 'user') {
       assert(uid, 422, '用户头像必须指定UID')
     }
@@ -56,13 +56,13 @@ router.post('/:classify', upload.any(), async (req, res, next) => {
       let { destination, filename } = item
       return path.join(uploadURL, path.parse(destination).name, filename).replace(/\\/g, '/').replace('http:/', 'http://')
     })
-
     let resultData = {
       message: "上传成功",
       data: {
         fileURL: fileURLS[0]
       }
     }
+
     if (fileType === 'article') {
       let data = fileURLS
       resultData = {
@@ -72,7 +72,11 @@ router.post('/:classify', upload.any(), async (req, res, next) => {
     }
     res.send(200, resultData)
   } catch (err) {
+    console.log(err)
     next(err)
   }
+
 })
+
+
 module.exports = router;

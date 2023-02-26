@@ -74,6 +74,10 @@ const REQUEST_MAP = {
     url: '/upload/article',
     method: 'POST'
   },
+  'deleteArticle': {
+    url: '/api/rest/articles',
+    method: 'DELETE'
+  }
 }
 
 async function encrypt(value) {

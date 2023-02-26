@@ -105,6 +105,7 @@ pageRouter.route('/info', async (req, res, next) => {
       item.value = result[key]
       return item
     })
+    console.log(data)
     res.render(renderHandle(routeName, data))
   } catch (err) {
     console.log(err)
@@ -137,6 +138,7 @@ pageRouter.route('/write', async (req, res, next) => {
   //动态修改 router的实例wrap容器元素
   let routeName = 'write'
   let columnId = req.body.columnID
+  console.log(req)
   try {
     let { list } = await Http({
       type: 'columns', data: {
@@ -199,9 +201,8 @@ pageRouter.route('/article', async (req, res, next) => {
         return false
       }
       await Http({ type: 'postComment', data })
-      pageRouter.reload('/article', { routeName: "article", articleID: articleId })
+      pageRouter.reload('/article', { routeName: "article", articleID: articleId, columnID: columnId })
     })
-
   } catch (err) {
     console.log(err)
   }
@@ -223,7 +224,6 @@ pageRouter.route('/index', async (req, res, next) => {
     store.set(userInfoName, userInfo)
     res.render(renderHandle('slide', userInfo))
   } catch (err) {
-    console.log(err)
     isLogin = false
   }
   res.render(renderHandle(routeName, { isLogin, avatar: userInfo.avatar }))
@@ -248,13 +248,20 @@ pageRouter.route('/articles', async (req, res, next) => {
     let columnId = req.body.columnID
     let q = req.body.search
     let queryData = { column: columnId, q }
-    let result = await Http({
-      type: routeName,
-      data: {
-        query: QS.stringify(queryData)
-      }
-    })
-    result.columnId = columnId
+    let result = {}
+    if (q) {
+      result = await Http({
+        type: routeName,
+        data: {
+          query: QS.stringify(queryData)
+        }
+      })
+      result.columnId = columnId
+    } else {
+      result = await Http({
+        type: routeName
+      })
+    }
     result.list = result.list.map(item => {
       item.content = `${$(item.content).text().slice(0, 60)}...`
       return item
