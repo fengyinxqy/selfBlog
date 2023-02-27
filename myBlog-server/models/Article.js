@@ -76,7 +76,12 @@ const schema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'Column',
     required: true
-  }
+  },
+  like_users: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+    }
+  ]
 })
 schema.set('toJSON', { getters: true })
 module.exports = mongoose.model('Article', schema)
