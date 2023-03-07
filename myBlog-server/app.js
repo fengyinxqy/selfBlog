@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 13:06:21
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-24 17:58:06
+ * @LastEditTime: 2023-03-02 11:29:05
  * @FilePath: \myBlog-server\app.js
  * @Description: 
  * 
@@ -20,6 +20,8 @@ const User = require('./models/User')
 const expressJwt = require('express-jwt')
 const { maxFileSize } = require('./config')
 const { getPublicKeySync } = require('./core/rsaControl')
+
+require('./socket')
 
 const app = express();
 
@@ -56,6 +58,7 @@ const uploadRoute = require('./routes/upload')
 const artLikesRoute = require('./routes/artLikes')
 const userRoute = require('./routes/user')
 const { send } = require('process');
+const expressRoute = require('./routes/express')
 
 
 
@@ -108,6 +111,8 @@ app.use('/index', (req, res, next) => {
 
 //获取公钥
 app.use('/keys', pubKeyRoute)
+
+app.use('/express/:id', expressRoute)
 
 //文件上传
 app.use('/upload', uploadRoute)
