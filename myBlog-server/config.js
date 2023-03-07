@@ -2,7 +2,7 @@
  * @Author: Petrichor 572752189@qq.com
  * @Date: 2022-12-15 14:18:59
  * @LastEditors: Petrichor 572752189@qq.com
- * @LastEditTime: 2023-01-24 22:32:26
+ * @LastEditTime: 2023-03-02 11:15:02
  * @FilePath: \myBlog-server\config.js
  * @Description: 
  * 
@@ -21,5 +21,5 @@ module.exports = {
   userPath: path.join(process.cwd(), '/user/user.json'),
   uploadPath: path.join(process.cwd(), '/uploads'),
   uploadURL: 'http://127.0.0.1:3000/',
-  maxFileSize: 102400
+  maxFileSize: 10240000
 }
